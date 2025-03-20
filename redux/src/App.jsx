@@ -3,6 +3,7 @@ import { useState , useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { increment  , decrement , incrementByAmount} from './utils/counterslice'
 import { addTodo, toggleTodo, removeTodo, fetchTodos } from "./utils/todosSlice";
+import { fetchUser } from './utils/fetchUserSlice';
 function App() {
 
 const [input, setInput] = useState("");
@@ -14,12 +15,21 @@ const count = useSelector((store) => store.count.value)
   const status = useSelector((state) => state.todos.status);
   const error = useSelector((state) => state.todos.error);
 
+  const users = useSelector((store) => store.fetchUser.users)
+
 
   useEffect(() => {
     if (todos.length === 0) {
       dispatch(fetchTodos()); // Fetch todos on first load
     }
   }, [dispatch]);
+
+
+  useEffect(() => {
+    if(users.length === 0){
+      dispatch(fetchUser())
+    }
+  }, [dispatch])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,6 +49,9 @@ const count = useSelector((store) => store.count.value)
       <button onClick={() => dispatch(decrement())}>minus</button>
       <button onClick={() => dispatch(incrementByAmount(5))}>add 5</button>
      </div>
+
+
+     {/* counter ends */}
 
      <h2>Todo List (Redux Toolkit)</h2>
 
@@ -61,6 +74,13 @@ const count = useSelector((store) => store.count.value)
           </li>
         ))}
       </ul>
+
+      {/* todo list ends */}
+
+      <h2>Fetch users using redux thunk</h2>
+        {users.map((user) => (
+          <div key={user.id}> {user.name}</div>
+        ))}
     </>
   )
 }
