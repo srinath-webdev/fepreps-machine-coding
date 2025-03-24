@@ -1,0 +1,18 @@
+.star-container{
+  display: flex;
+  padding: 25px;
+  border: 2px solid black;
+  border-radius: 10px;
+ 
+}
+
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.stars{
+  color:red ;
+}
