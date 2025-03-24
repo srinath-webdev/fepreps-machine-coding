@@ -1,0 +1,29 @@
+.tab-container{
+    display:flex;
+    background-color: red;
+    width: 200px;
+}
+
+.tabs{
+    margin-right: 10px;
+    position: relative;
+    top: 0;
+}
+
+.tab-body{
+    border: 1px solid aliceblue;
+    width: 400px;
+    height: 400px;
+}
+
+.profile{
+    display: inline;
+   
+}
+
+
+.error{
+    display: block ;
+    color: red;
+    font-size: smaller;
+}
