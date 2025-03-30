@@ -90,7 +90,7 @@ const vowels = ["a", "i", "e", "o", "u"];
 
 // console.log(getVowels("srinath"));
 
-// function findVowels(str){
+//     function findVowels(str){
 
 //     let result = ""
 
@@ -273,6 +273,7 @@ const vowels = ["a", "i", "e", "o", "u"];
 
 // console.log(largerElement(matrix));
 // // Output: [9, 13, 15]
+
 
 // function removeFalseValue(arr) {
 //   var trueth = [];
