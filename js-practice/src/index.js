@@ -27,6 +27,7 @@
 // a = a - b ;
 // console.log(a, b);
 
+
 // remove duplicate chars from string
 
 // function dupChars(str) {
@@ -107,6 +108,7 @@ const vowels = ["a", "i", "e", "o", "u"];
 // }
 
 // console.log(findVowels("srinath"))
+
 
 // function characterOccurance(str , val ){
 
@@ -248,6 +250,24 @@ const vowels = ["a", "i", "e", "o", "u"];
 // }
 
 // console.log(confirmEnd("preethi", "i") , );  // ✅ true
+
+
+
+
+
+// function largestElement(arr) {
+//     return arr.map(row => Math.max(...row));
+//   }
+//   console.log(largestElement( [
+//       [3, 5, 9, 1],
+//       [13, 7, 2, 8],
+//      [4, 6, 15, 11],
+//      ]))
+
+
+
+
+
 
 // const matrix = [
 //   [3, 5, 9, 1],
@@ -755,39 +775,6 @@ const vowels = ["a", "i", "e", "o", "u"];
 
 
 
-
-
-
-
-// function findDuplicates(arr){
-//     let checkDups = {}
-
-//     let res = []
-
-//     for (let i = 0 ; i<arr.length ; i++){
-//         if(checkDups[arr[i]]){
-//             res.push(arr[i])
-//         }
-//         else{
-//             checkDups[arr[i]] = true
-//         }
-//     }
-//     return res;
-// }
-
-// console.log(findDuplicates([1, 2, 1, 5, 3, 4, 3, 5]))
-
-
-
-
-
-
-
-
-
-
-
-
 // const students = [
 //     { name: 'John', score: 85 },
 //     { name: 'Sarah', score: 92 },
@@ -1201,8 +1188,28 @@ const vowels = ["a", "i", "e", "o", "u"];
 // onceCall();
 
 
+//Recursion 
+
+// function multiply(arr){
+//     if(arr.length <= 0 ) {
+//         return 1
+//     }
+//     return arr[arr.length -1] * multiply(arr.slice(0,arr.length -1)) 
+// }
 
 
+// console.log("recursion" , multiply([1,2,3,4,5]))
+
+
+// function createRange(start, end) {
+//     const result = [];
+//     for (let i = start; i <= end; i++) {
+//       result.push(i);
+//     }
+//     return result;
+//   }
+  
+//   console.log(createRange(3, 7)); // [3, 4, 5, 6, 7]
 
 
 
@@ -1226,10 +1233,10 @@ const vowels = ["a", "i", "e", "o", "u"];
 //       return cache[key]
 //     }
 //     else{
-//         console.log("new operation :" ) ;
+//        console.log("new operation :" ) ;
 //        let result = fn.apply(this, args);
-//       cache[key] = result; // ✅ Store result using the unique key
-//       return result;
+//        cache[key] = result; // ✅ Store result using the unique key
+//        return result;
 
 //     }
 
@@ -1247,6 +1254,11 @@ const vowels = ["a", "i", "e", "o", "u"];
 
 // console.log(pollyfillMemo(2,3))
 // console.log(pollyfillMemo(2,3))
+
+
+
+
+
 
 
 // promise polyfill
@@ -1363,7 +1375,7 @@ const vowels = ["a", "i", "e", "o", "u"];
 //it will give first value either its fullfilles or rejected
 
 
-// MyPromise.race = function (promises) {
+//     MyPromise.race = function (promises) {
 //     return new MyPromise((resolve , reject) => {
 //         promises.forEach((promise ) => {
 //             promise.then(resolve).catch(reject)
@@ -1448,3 +1460,64 @@ const vowels = ["a", "i", "e", "o", "u"];
 // MyPromise.allSettled([p1, p2, p3]).then(console.log).catch(console.error);
 
 
+
+
+
+
+
+//promise retry 
+
+// const mathPromise = () => new Promise ((resolve,reject)=>{
+    
+//     const success = Math.random() > 0.6
+
+//     setTimeout(() => {
+//         success ? resolve("promise resolved") : reject("promise rejected")
+//     },300)
+
+// })
+
+// const autoRetry = async (fn , retry) =>{
+//     try{
+//         return await fn()
+//     }
+//     catch(error){
+//         if(retry <= 1){
+//             throw new Error("max limit exeed")
+//         }
+
+//         console.log("retryingg..")
+
+//         return await autoRetry(fn , retry - 1)
+//     }
+// }
+
+// autoRetry(mathPromise , 3).then(console.log).catch(console.error)
+
+
+
+
+// const urls = [ "https://jsonplaceholder.typicode.com/posts/1",
+//     "https://jsonplaceholder.typicode.com/users/1",
+//     "https://jsonplaceholder.typicode.com/comments/1"]
+    
+    
+//     const fetchData = async () => {
+    
+//       try {
+//         const responses =  await Promise.all(
+//           urls.map((url) => fetch(url).then(res => res.json()))
+//         )
+    
+//         console.log("Post:", responses[0]);
+//         console.log("User:", responses[1]);
+//         console.log("Comment:", responses[2]);
+//       }
+//       catch (error) {
+//         console.error("Error fetching data:", error);
+//       }
+    
+//     } 
+    
+//     fetchData() 
+  
