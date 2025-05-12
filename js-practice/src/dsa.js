@@ -22,7 +22,7 @@
 //     return secMax === Number.NEGATIVE_INFINITY  ? -1 : secMax
 // }
 
-// console.log(secondLargest([10 , 10 ,12  , 11]))
+// console.log(secondLargest([10 , 10 ,12  , 11 ]))
 
 
 
@@ -224,26 +224,28 @@
 //steps > split the str > char arr > pass all ele to Char > to reverse use while loop > pop curr ele by new var > add it in a string  
 
 
-// function reverseString(str){
+// function reverseStringOfWord(str){
 
 //     let splitS = str.split(" ")
-//     let char = []
-
-
-//     for (let i of splitS){
-//         char.push(i)
-//     }
-
 //     let final = []
-//     while(char.length){
-//        final.push(char.pop()) 
+    
+//     for(let i=0 ; i < splitS.length ; i++){
+//         let word = splitS[i]
+//         let charReverse = ""
+
+//         for(let j=word.length -1 ; j >= 0 ; j--){
+//             charReverse += word[j]
+//         }
+
+//         final.unshift(charReverse)
 //     }
+    
 
 //     return final.join(" ")
 // }
 
 
-// console.log(reverseString("hello the is srinath"))
+// console.log(reverseStringOfWord("hello i'm srinath"))
 
 
 
@@ -417,6 +419,7 @@
 //         if (nums[middle] === target){
 //             return middle
 //         }
+
 //         else if(nums[middle] < target){
 //             start = middle +1
 //         }

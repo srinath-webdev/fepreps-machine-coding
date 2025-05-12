@@ -2,9 +2,6 @@
 
 import { useReducer } from "react"
 
-
-
-
 export const Reducer = () => {
     const initialVal = 0 ;
     const countReducer = (state , action ) =>{
@@ -18,7 +15,6 @@ export const Reducer = () => {
             case "RESET" : {
                 return 0
             }
-
             default: 
             return state 
         }

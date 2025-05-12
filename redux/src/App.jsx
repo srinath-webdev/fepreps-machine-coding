@@ -14,7 +14,6 @@ const count = useSelector((store) => store.count.value)
   const todos = useSelector((state) => state.todos.list);
   const status = useSelector((state) => state.todos.status);
   const error = useSelector((state) => state.todos.error);
-
   const users = useSelector((store) => store.fetchUser.users)
 
 

@@ -759,7 +759,7 @@ const vowels = ["a", "i", "e", "o", "u"];
 //     if(word.length > temp.length){
 //       temp = word
 
-//     }
+//     }F
 
 //    }
 
@@ -964,16 +964,38 @@ const vowels = ["a", "i", "e", "o", "u"];
 
 
 
+// Array.prototype.myReduce = function(callback, initialValue) {
+//     // Your implementation
 
-// Array.prototype.myReduce = function (cb , initialValue){
+//     if (this === null) {
+//          throw new Error("null or undefined")
+//     }
 
-//    let  accumulator = initialValue
+//     if (typeof callback !== "function"){
+//         throw new Error("not a function")
+//     }
+  
+//     let i = 0; 
+//     let accumulator;
 
-//     for (let i=0 ; i<this.length ;  i++ ){
-//         accumulator = accumulator ? cb(accumulator , this[i]) : this[i]
+//     if (arguments.length >= 2) {
+//         accumulator = initialValue
+//     }
+//     else {
+//         if (this.length === 0) {
+//             throw new Error("with empty value reduce not perform")
+//         }
+
+//         accumulator = this[0]
+//         i = 1
+//     }
+
+//     for (; i < this.length; i++){
+//         accumulator = callback(accumulator , this[i])
 //     }
 
 //     return accumulator
+
 // }
 
 // const arr1 = [1,2,3,4,5]
@@ -1066,57 +1088,45 @@ const vowels = ["a", "i", "e", "o", "u"];
 
 
 
-
-//fetch with auto retry
-
-// const maxRetries = 3;
-// const url = "https://jsonplaceholder.typicode.com/posts/1";
-
-// const fetchUrl = async (url) => {
-//   const res = await fetch(url);
-
-//   if (!res.ok) {
-//     throw new Error("fetching url failed");
-//   }
-
-//   const data = await res.json();
-
-//   return data;
-// };
-
-// const autoRetry = async (func, maxtry, url) => {
-//   try {
-//     return await func(url);
-//   } catch (error) {
-//     console.lo("retried");
-//     if (maxtry <= 1) {
-//       throw new Error("MAx limit exceecd");
+// const fetchData = async(url) => {
+//     try {
+//         const res = await fetch(url); 
+//         if (!res.ok) {
+//             throw new Error(`HTTP error! status: ${res.status}`);
+//         }
+//         const result = await res.json();
+//         return result;
 //     }
-//     return await autoRetry(() => {
-//       func, maxtry - 1, url;
-//     });
-//   }
-// };
+//     catch(error) {
+//         console.log(error);
+//         throw error; // Re-throw the error so autoretry can catch it
+//     }
+// } 
+
+// const autoretry = async(fn, maxtries, url) => {
+//     try {
+//         return await fn(url);
+//     }
+//     catch(error) {
+//         if (maxtries > 1) {
+//             console.log("retrying...");
+//             return autoretry(fn, maxtries - 1, url);
+//         }
+//         throw error; // Throw error when all retries are exhausted
+//     }
+// }
 
 // const main = async () => {
-//   try {
-//     const data = await autoRetry(fetchUrl, maxRetries, url);
-
-//     console.log(data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+//     try {
+//         const data = await autoretry(fetchData, 3, "https://jsonplaceholder.typicode.com/posts/1");
+//         console.log(data);
+//     }
+//     catch(error) {
+//         console.error("All retries failed:", error);
+//     }
+// }
 
 // main();
-
-
-
-
-
-
-
-
 
 
 
@@ -1497,6 +1507,7 @@ const vowels = ["a", "i", "e", "o", "u"];
 
 
 
+
 // const urls = [ "https://jsonplaceholder.typicode.com/posts/1",
 //     "https://jsonplaceholder.typicode.com/users/1",
 //     "https://jsonplaceholder.typicode.com/comments/1"]
@@ -1520,4 +1531,28 @@ const vowels = ["a", "i", "e", "o", "u"];
 //     } 
     
 //     fetchData() 
+  
+
+
+
+
+//implement memoization 
+
+
+// function memoize(fn) {
+//     const cache = new Map();
+  
+//     return function (...args) {
+//       const key = JSON.stringify(args);
+//       if (cache.has(key)) {
+//         console.log("Fetching from cache:", key);
+//         return cache.get(key);
+//       }
+  
+//       const result = fn.apply(this, args);
+//       cache.set(key, result);
+//       console.log("Computing result:", key);
+//       return result;
+//     };
+//   }
   

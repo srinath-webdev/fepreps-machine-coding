@@ -32,7 +32,7 @@ function App() {
     // console.log(e)
 
     if (!e.target.value && e.key === "Backspace") {
-      inputRef.current[index - 1]?.focus()
+      inputRef.current[i - 1]?.focus()
     }
   }
 
@@ -42,7 +42,8 @@ function App() {
         <div>OTP LOGIN</div>
       {
         inputArr.map((item , index) => (
-        <input className='input' type='text'
+        <input className='input'
+
         ref={ input  => inputRef.current[index] = input}
          key={index}
          onChange={e => handleChanges(e.target.value , index)}
